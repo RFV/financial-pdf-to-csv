@@ -22,7 +22,7 @@ def extract(text_data, csv_file, backup_file):
 	payload = paypal_data.group(1).replace(" ", "").replace(".", "")
 
 	#create the rows as they will be in the csv file
-	rows = [[csv_type, date, None, None, csv_text, -payload, csv_motkonto, None, csv_konto, None]]#,
+	rows = [[csv_type, date, None, None, csv_text, abs(float(payload.replace(',','.'))), csv_motkonto, None, csv_konto, None]]#,
 			# [csv_type2, date, None, None, csv_text2, suminntekt_data, csv_konto, None, csv_motkonto2, csv_mva]]
 	#export to csv file, with backup facility
 	convertor.add_to_csv_file(rows, csv_file, backup_file)
